@@ -1,6 +1,6 @@
 ---
 title: "BAKA"
-published: 2025-04-15
+published: 2026-04-15
 pinned: true
 description: "里面有啥子"
 tags: [baka]
