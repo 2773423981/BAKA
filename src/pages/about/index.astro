@@ -1,0 +1,104 @@
+---
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "../../layouts/MainGridLayout.astro";
+import { url } from "../../utils/url-utils";
+
+const profiles = [
+	{
+		id: "camaster",
+		name: "椛",
+		avatar: "/assets/images/Avatar.jpg",
+		description: "创造者，主要维护者，站长",
+		links: [
+			{ url: "https://github.com/2773423981", icon: "fa7-brands:github" },
+			{
+				url: "https://space.bilibili.com/494620892",
+				icon: "fa7-brands:bilibili",
+			},
+		],
+	},
+	{
+		id: "jinxing",
+		name: "瑾星",
+		avatar: "/assets/images/jinxing.jpg",
+		description: "椛的对象",
+		links: [
+			{
+				url: "https://space.bilibili.com/3546885342103645",
+				icon: "fa7-brands:bilibili",
+			},
+		],
+	},
+	{
+		id: "treefire",
+		name: "一棵木三把火",
+		avatar: "/assets/images/TreeFire.jpg",
+		description: "椛的干爹",
+		links: [
+			{ url: "https://github.com/nonamecpp", icon: "fa7-brands:github" },
+			{
+				url: "https://space.bilibili.com/1945873720",
+				icon: "fa7-brands:bilibili",
+			},
+		],
+	},
+];
+
+const title = "关于我们";
+---
+
+<MainGridLayout title={title}>
+	<div
+		class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32"
+	>
+		<div class="card-base z-10 px-9 py-6 relative w-full">
+			<h1
+				class="text-2xl font-bold mb-6 text-black/90 dark:text-white/90"
+			>
+				{title}
+			</h1>
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+				{
+					profiles.map((profile) => (
+						<div class="group flex flex-col items-center p-6 rounded-xl border border-black/10 dark:border-white/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+							<a
+								href={url(`/about/${profile.id}/`)}
+								class="flex flex-col items-center"
+							>
+								<img
+									src={profile.avatar}
+									alt={profile.name}
+									class="w-20 h-20 rounded-full object-cover mb-4 group-hover:scale-105 transition-transform duration-300"
+									loading="lazy"
+								/>
+								<h2 class="text-lg font-bold text-black/90 dark:text-white/90 mb-2">
+									{profile.name}
+								</h2>
+							</a>
+							<p class="text-sm text-black/60 dark:text-white/60 text-center mb-3">
+								{profile.description}
+							</p>
+							{profile.links && profile.links.length > 0 && (
+								<div class="flex gap-3 mt-auto">
+									{profile.links.map((link) => (
+										<a
+											href={link.url}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="btn-plain scale-animation rounded-lg h-9 w-9 flex items-center justify-center text-black/60 dark:text-white/60 hover:text-[var(--primary)]"
+										>
+											<Icon
+												name={link.icon}
+												class="text-lg"
+											/>
+										</a>
+									))}
+								</div>
+							)}
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</MainGridLayout>

@@ -43,9 +43,9 @@ export const siteConfig: SiteConfig = {
 		anime: true, // 番剧页面开关
 		diary: true, // 日记页面开关
 		friends: true, // 友链页面开关
-		projects: true, // 项目页面开关
-		skills: true, // 技能页面开关
-		timeline: true, // 时间线页面开关
+		projects: false, // 项目页面开关
+		skills: false, // 技能页面开关
+		timeline: false, // 时间线页面开关
 		albums: true, // 相册页面开关
 		devices: true, // 设备页面开关
 	},
@@ -338,48 +338,21 @@ export const navBarConfig: NavBarConfig = {
 			name: "Others",
 			url: "#",
 			icon: "material-symbols:more-horiz",
-			children: [
-				{
-					name: "Projects",
-					url: "/projects/",
-					icon: "material-symbols:work",
-				},
-				{
-					name: "Skills",
-					url: "/skills/",
-					icon: "material-symbols:psychology",
-				},
-				{
-					name: "Timeline",
-					url: "/timeline/",
-					icon: "material-symbols:timeline",
-				},
-			],
+			children: [],
 		},
 		LinkPreset.Friends,
 	],
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/Avatar.jpg", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
-	name: "BAKA_复读椛",
-	bio: "一只蒟蒻",
+	avatar: "assets/images/BAKA.jpg", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
+	name: "《咱 们 仨》",
+	bio: "超级无敌厉害的简介",
 	typewriter: {
 		enable: true, // 启用个人简介打字机效果
 		speed: 80, // 打字速度（毫秒）
 	},
-	links: [
-		{
-			name: "Bilibili",
-			icon: "fa7-brands:bilibili",
-			url: "https://space.bilibili.com/494620892",
-		},
-		{
-			name: "GitHub",
-			icon: "fa7-brands:github",
-			url: "https://github.com/2773423981",
-		},
-	],
+	links: [],
 };
 
 export const licenseConfig: LicenseConfig = {

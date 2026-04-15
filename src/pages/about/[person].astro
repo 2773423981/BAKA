@@ -1,0 +1,127 @@
+---
+import type { Project } from "../../data/projects";
+import type { Skill } from "../../data/skills";
+import type { TimelineItem } from "../../components/features/timeline/types";
+import { PageHeader } from "@components/features/page-header";
+import { ProjectCard } from "@components/features/projects";
+import { SkillCard } from "@components/features/skills";
+import { TimelineCard } from "@components/features/timeline";
+import Markdown from "@components/misc/Markdown.astro";
+import { Icon } from "astro-icon/components";
+import { getEntry, render } from "astro:content";
+
+import MainGridLayout from "../../layouts/MainGridLayout.astro";
+
+export async function getStaticPaths() {
+	const profiles = ["camaster", "jinxing", "treefire"];
+	return profiles.map((person) => ({ params: { person } }));
+}
+
+const { person } = Astro.params;
+
+const aboutPost = await getEntry("spec", `about/${person}`);
+
+if (!aboutPost) {
+	throw new Error(`About page content not found for ${person}`);
+}
+
+const { Content } = await render(aboutPost);
+const title = aboutPost.data.title || person;
+
+// 动态加载每个人的数据
+const projectModule = await import(`../../data/projects/${person}.ts`);
+const skillModule = await import(`../../data/skills/${person}.ts`);
+const timelineModule = await import(`../../data/timeline/${person}.ts`);
+
+const projectsData: Project[] = projectModule.projectsData || [];
+const skillsData: Skill[] = skillModule.skillsData || [];
+const timelineData: TimelineItem[] = timelineModule.timelineData || [];
+---
+
+<MainGridLayout title={title}>
+	<script>
+		import("../../scripts/right-sidebar-layout.js");
+	</script>
+
+	<!-- 个人简介 -->
+	<div
+		class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32 mb-6"
+	>
+		<div class="card-base z-10 px-9 py-6 relative w-full">
+			<PageHeader title={title} />
+			<Markdown class="mt-2">
+				<Content />
+			</Markdown>
+		</div>
+	</div>
+
+	<!-- 项目展示 -->
+	{
+		projectsData.length > 0 && (
+			<div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32 mb-6">
+				<div class="card-base z-10 px-9 py-6 relative w-full">
+					<h2 class="text-xl font-bold mb-4 text-black/90 dark:text-white/90">
+						项目
+					</h2>
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+						{projectsData.map((project) => (
+							<ProjectCard project={project} maxTechStack={4} />
+						))}
+					</div>
+				</div>
+			</div>
+		)
+	}
+
+	<!-- 技能展示 -->
+	{
+		skillsData.length > 0 && (
+			<div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32 mb-6">
+				<div class="card-base z-10 px-9 py-6 relative w-full">
+					<h2 class="text-xl font-bold mb-4 text-black/90 dark:text-white/90">
+						技能
+					</h2>
+					<div
+						class="grid gap-6 items-start"
+						style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));"
+					>
+						{skillsData.map((skill) => (
+							<SkillCard skill={skill} />
+						))}
+					</div>
+				</div>
+			</div>
+		)
+	}
+
+	<!-- 时间线 -->
+	{
+		timelineData.length > 0 && (
+			<div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32 mb-6">
+				<div class="card-base z-10 px-9 py-6 relative w-full">
+					<h2 class="text-xl font-bold mb-4 text-black/90 dark:text-white/90">
+						时间线
+					</h2>
+					<div class="timeline-list relative">
+						{timelineData.map((item) => (
+							<TimelineCard item={item} />
+						))}
+					</div>
+				</div>
+			</div>
+		)
+	}
+</MainGridLayout>
+
+<style>
+	.timeline-list::before {
+		content: "";
+		position: absolute;
+		left: 9px;
+		top: 0;
+		bottom: 0;
+		width: 2px;
+		background: var(--line-divider);
+		border-radius: 1px;
+	}
+</style>

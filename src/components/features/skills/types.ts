@@ -1,4 +1,4 @@
-import type { Skill } from "../../../data/skills";
+import type { Skill } from "../../../data/skills/camaster";
 
 export interface SkillCardProps {
 	skill: Skill;
