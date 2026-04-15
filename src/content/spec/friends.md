@@ -5,4 +5,4 @@ description: My friends
 
 # Friends
 
-Here are my friends page.
+Here are my Friendship Links pages.

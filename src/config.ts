@@ -24,7 +24,7 @@ import { LinkPreset } from "./types/config";
 const SITE_LANG = "zh_CN"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
 const SITE_TIMEZONE = 8; //设置你的网站时区 from -12 to 12 default in UTC+8
 export const siteConfig: SiteConfig = {
-	title: "Mizuki",
+	title: "Ba☆Ka～",
 	subtitle: "One demo website",
 	siteURL: "https://baka-1ul.pages.dev/", // 请替换为你的站点URL，以斜杠结尾
 	siteStartDate: "2026-04-14", // 站点开始运行日期，用于站点统计组件计算运行天数
@@ -53,13 +53,13 @@ export const siteConfig: SiteConfig = {
 	// 顶栏标题配置
 	navbarTitle: {
 		// 显示模式："text-icon" 显示图标+文本，"logo" 仅显示Logo
-		mode: "text-icon",
+		mode: "logo",
 		// 顶栏标题文本
-		text: "Ba☆Ka～",
+		text: "",
 		// 顶栏标题图标路径，默认使用 public/assets/home/home.webp
-		icon: "assets/home/home.webp",
+		icon: "",
 		// 网站Logo图片路径
-		logo: "assets/home/default-logo.webp",
+		logo: "",
 	},
 
 	// 页面自动缩放配置
@@ -206,11 +206,11 @@ export const siteConfig: SiteConfig = {
 	generateOgImages: false, // 启用生成OpenGraph图片功能,注意开启后要渲染很长时间，不建议本地调试的时候开启
 	favicon: [
 		// 留空以使用默认 favicon
-		// {
-		//   src: '/favicon/icon.png',    // 图标文件路径
-		//   theme: 'light',              // 可选，指定主题 'light' | 'dark'
-		//   sizes: '32x32',              // 可选，图标大小
-		// }
+		{
+			src: "/Avatar32.webp", // 图标文件路径
+			theme: "light", // 可选，指定主题 'light' | 'dark'
+			sizes: "32x32", // 可选，图标大小
+		},
 	],
 
 	// 字体配置
@@ -284,7 +284,7 @@ export const navBarConfig: NavBarConfig = {
 					name: "GitHub",
 					url: "https://github.com/2773423981",
 					external: true,
-					icon: "fa7-brands:github",	
+					icon: "fa7-brands:github",
 				},
 				{
 					name: "Bilibili",
@@ -332,11 +332,6 @@ export const navBarConfig: NavBarConfig = {
 					url: "/about/",
 					icon: "material-symbols:person",
 				},
-				{
-					name: "Friends",
-					url: "/friends/",
-					icon: "material-symbols:group",
-				},
 			],
 		},
 		{
@@ -361,6 +356,7 @@ export const navBarConfig: NavBarConfig = {
 				},
 			],
 		},
+		LinkPreset.Friends,
 	],
 };
 
