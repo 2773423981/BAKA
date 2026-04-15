@@ -426,10 +426,10 @@ export const shareConfig: ShareConfig = {
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "", // 公告标题，填空使用i18n字符串Key.announcement
-	content: "你椛通宵给咱的blog造出来了qwp（虽然是套模板）", // 公告内容
+	content: "今天怎么觉得你们都欠咱50块钱", // 公告内容
 	closable: true, // 允许用户关闭公告
 	link: {
-		enable: true, // 启用链接
+		enable: false, // 启用链接
 		text: "暂时没加功能", // 链接文本
 		url: "", // 链接 URL
 		external: false, // 内部链接
