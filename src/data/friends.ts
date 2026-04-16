@@ -11,7 +11,16 @@ export interface FriendItem {
 }
 
 // 友情链接数据
-export const friendsData: FriendItem[] = [];
+export const friendsData: FriendItem[] = [
+	{
+		id: 1,
+		title: "未觉寻星",
+		imgurl: "https://pic.xyamzw.top/file/avatar.png",
+		desc: "一个人的命运，就是他的性格",
+		siteurl: "https://blog.xyamzw.top",
+		tags: ["friends"],
+	},
+];
 
 // 获取所有友情链接数据
 export function getFriendsList(): FriendItem[] {
