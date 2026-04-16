@@ -275,25 +275,7 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Home,
 		LinkPreset.Archive,
 		// 支持自定义导航栏链接，支持多级菜单
-		{
-			name: "Links",
-			url: "/links/",
-			icon: "material-symbols:link",
-			children: [
-				{
-					name: "GitHub",
-					url: "https://github.com/2773423981",
-					external: true,
-					icon: "fa7-brands:github",
-				},
-				{
-					name: "Bilibili",
-					url: "https://space.bilibili.com/494620892",
-					external: true,
-					icon: "fa7-brands:bilibili",
-				},
-			],
-		},
+
 		{
 			name: "My",
 			url: "/content/",
@@ -334,12 +316,7 @@ export const navBarConfig: NavBarConfig = {
 				},
 			],
 		},
-		{
-			name: "Others",
-			url: "#",
-			icon: "material-symbols:more-horiz",
-			children: [],
-		},
+
 		LinkPreset.Friends,
 	],
 };
