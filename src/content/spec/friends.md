@@ -5,6 +5,7 @@ description: My friends
 
 ## 本站信息
 站长：BAKA_复读椛
+
 地址：https://baka-1ul.pages.dev
 
 ## 添加咱的友链
