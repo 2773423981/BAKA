@@ -2,6 +2,7 @@
 title: "悲惨的日子"
 published: 2026-04-16
 pinned: true
+category: 椛的碎碎念
 description: "怎么感觉你们欠咱五十块"
 tags: [疯狂星期四]
 author: "椛"

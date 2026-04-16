@@ -1,7 +1,8 @@
 ---
 title: "BAKA"
 published: 2026-04-15
-pinned: true
+pinned: false
+category: 椛的碎碎念
 description: "里面有啥子"
 tags: [baka]
 author: "BAKA"
