@@ -403,7 +403,7 @@ export const shareConfig: ShareConfig = {
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "", // 公告标题，填空使用i18n字符串Key.announcement
-	content: "今天怎么觉得你们都欠咱50块钱", // 公告内容
+	content: "公告就是没有公告喵", // 公告内容
 	closable: true, // 允许用户关闭公告
 	link: {
 		enable: false, // 启用链接
