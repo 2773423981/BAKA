@@ -10,6 +10,7 @@ import Markdown from "@components/misc/Markdown.astro";
 import { Icon } from "astro-icon/components";
 import { getEntry, render } from "astro:content";
 
+import StatusMeme from "../../components/features/status/StatusMeme.astro";
 import MainGridLayout from "../../layouts/MainGridLayout.astro";
 
 export async function getStaticPaths() {
@@ -55,6 +56,8 @@ const timelineData: TimelineItem[] = timelineModule.timelineData || [];
 		</div>
 	</div>
 
+	<!-- 状态展示 -->
+	{person === "camaster" && <StatusMeme />}
 	<!-- 项目展示 -->
 	{
 		projectsData.length > 0 && (
