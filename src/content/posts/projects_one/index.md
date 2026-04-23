@@ -1,6 +1,6 @@
 ---
 title: "神秘的小玩意"
-published: 2026-04-17
+published: 2026-04-23
 pinned: false
 category: 神秘小项目
 description: "突发奇想写的大粪"
@@ -9,7 +9,7 @@ author: "椛"
 draft: false
 date: 2026-04-23
 image: './BAKA.jpg'
-pubDate: 2026-04-17
+pubDate: 2026-04-23
 ---
 
 今天突发奇想想到一个好玩的
