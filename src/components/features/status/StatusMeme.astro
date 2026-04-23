@@ -3,38 +3,8 @@
   <div>
     <p class="text-xl text-black/50 dark:text-white/50 mb-2">Camaster 现在在干嘛</p>
     <p id="status-text" class="text-3xl font-medium text-black/90 dark:text-white/90">加载中...</p>
+    <p id="status-time" class="text-sm text-black/40 dark:text-white/40 mt-1"></p>
   </div>
 </div>
 
-<script>
-  // @ts-nocheck
-  const ICON_MAP = {
-    "code": "/assets/status-icons/code.jpg",
-    "github": "/assets/status-icons/github.jpg",
-    "bilibili": "/assets/status-icons/r18.jpg",
-    "youtube": "/assets/status-icons/r18.jpg",
-    "steam": "/assets/status-icons/game.jpg",
-    "osu": "/assets/status-icons/osu.jpg",
-    "firefox": "/assets/status-icons/r18.jpg",
-    "chromium": "/assets/status-icons/r18.jpg",
-    "mpv": "/assets/status-icons/r18.jpg",
-    "terminal": "/assets/status-icons/Terminal.jpg",
-    "idle": "/assets/status-icons/daydream.jpg",
-    "unknown": "/assets/status-icons/daydream.jpg"
-  };
-
-  async function update() {
-    try {
-      const r = await fetch('https://status-api.jjjkkklll258000.workers.dev/status');
-      const d = await r.json();
-      document.getElementById('status-img').src = ICON_MAP[d.icon] || ICON_MAP["unknown"];
-      document.getElementById('status-text').textContent = d.status;
-    } catch(e) {
-      document.getElementById('status-text').textContent = "离线中";
-      document.getElementById('status-img').src = ICON_MAP["idle"];
-    }
-  }
-
-  update();
-  setInterval(update, 5000);
-</script>
+<script src="/assets/status.js"></script>
