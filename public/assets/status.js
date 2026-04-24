@@ -57,4 +57,4 @@ async function updateStatus() {
 }
 
 updateStatus();
-setInterval(updateStatus, 5000);
+setInterval(updateStatus, 10000);
