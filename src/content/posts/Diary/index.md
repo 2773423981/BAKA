@@ -1,9 +1,9 @@
 ---
-title: "椛的超级日记"
+title: "2026-04-23 小日记"
 published: 2026-04-23
 pinned: false
 category: 椛的小日记
-description: "2026-04-23 小日记"
+description: "这是一篇日记"
 tags: [椛的小日记]
 author: "椛"
 draft: false
