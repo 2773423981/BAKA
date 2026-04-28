@@ -30,6 +30,9 @@ const postsCollection = defineCollection({
 		/* Posts alias */
 		alias: z.string().optional(),
 
+		/* 隐藏文章 - 不在列表中显示 但可通过直接链接访问 */
+		hidden: z.boolean().optional().default(false),
+
 		/* Custom permalink - 自定义固定链接，优先级高于 alias */
 		permalink: z.string().optional(),
 

@@ -119,7 +119,18 @@ export default defineConfig({
 		svelte({
 			preprocess: vitePreprocess(),
 		}),
-		sitemap(),
+		sitemap({
+			filter: (page) => {
+				// 过滤掉隐藏文章的 permalink 页面 但保留 /posts/ 下的页面
+				// 因为 hidden 文章仍然可以通过直接链接访问 只是不在列表中显示
+				// 如果需要完全隐藏 可以取消下面的注释
+				// if (page.includes('/posts/')) {
+				// 	const slug = page.split('/posts/')[1]?.replace(/\/$/, '');
+				// 	// 这里无法直接访问 frontmatter 所以暂时不过滤
+				// }
+				return true;
+			},
+		}),
 		mdx(),
 	],
 	markdown: {

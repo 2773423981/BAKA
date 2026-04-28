@@ -3,7 +3,9 @@ import { getSortedPosts } from "../../utils/content-utils";
 export async function GET() {
 	const posts = await getSortedPosts();
 
-	const allPostsData = posts.map((post) => {
+	const allPostsData = posts
+		.filter((post) => !post.data.hidden)
+		.map((post) => {
 		const date = new Date(post.data.published);
 		const year = date.getFullYear();
 		const month = String(date.getMonth() + 1).padStart(2, "0");

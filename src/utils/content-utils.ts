@@ -4,8 +4,8 @@ import { initPostIdMap } from "@utils/permalink-utils";
 import { getCategoryUrl, getPostUrl } from "@utils/url-utils";
 import { type CollectionEntry, getCollection } from "astro:content";
 
-// // Retrieve posts and sort them by publication date
-async function getRawSortedPosts() {
+// 获取所有文章（包括隐藏文章）用于路由生成
+async function getAllSortedPosts() {
 	const allBlogPosts = await getCollection("posts", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
@@ -39,6 +39,32 @@ async function getRawSortedPosts() {
 		const dateB = new Date(b.data.published);
 		return dateA > dateB ? -1 : 1;
 	});
+	return sorted;
+}
+
+// // Retrieve posts and sort them by publication date
+async function getRawSortedPosts() {
+	const allBlogPosts = await getAllSortedPosts();
+
+	// 过滤掉隐藏文章（不在列表中显示 但可通过直接链接访问）
+	const visiblePosts = allBlogPosts.filter((post) => !post.data.hidden);
+
+	return visiblePosts;
+}
+
+// 导出获取所有文章的函数（包括隐藏文章）用于路由生成
+export async function getAllPostsForRouting() {
+	const sorted = await getAllSortedPosts();
+
+	for (let i = 1; i < sorted.length; i++) {
+		sorted[i].data.nextSlug = sorted[i - 1].id;
+		sorted[i].data.nextTitle = sorted[i - 1].data.title;
+	}
+	for (let i = 0; i < sorted.length - 1; i++) {
+		sorted[i].data.prevSlug = sorted[i + 1].id;
+		sorted[i].data.prevTitle = sorted[i + 1].data.title;
+	}
+
 	return sorted;
 }
 
@@ -86,8 +112,11 @@ export async function getTagList(): Promise<Tag[]> {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
 
+	// 过滤掉隐藏文章
+	const visiblePosts = allBlogPosts.filter((post) => !post.data.hidden);
+
 	const countMap: Record<string, number> = {};
-	allBlogPosts.forEach((post: { data: { tags: string[] } }) => {
+	visiblePosts.forEach((post: { data: { tags: string[] } }) => {
 		post.data.tags.forEach((tag: string) => {
 			if (!countMap[tag]) {
 				countMap[tag] = 0;
@@ -114,8 +143,12 @@ export async function getCategoryList(): Promise<Category[]> {
 	const allBlogPosts = await getCollection<"posts">("posts", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
+
+	// 过滤掉隐藏文章
+	const visiblePosts = allBlogPosts.filter((post) => !post.data.hidden);
+
 	const count: Record<string, number> = {};
-	allBlogPosts.forEach((post: { data: { category: string | null } }) => {
+	visiblePosts.forEach((post: { data: { category: string | null } }) => {
 		if (!post.data.category) {
 			const ucKey = i18n(I18nKey.uncategorized);
 			count[ucKey] = count[ucKey] ? count[ucKey] + 1 : 1;
@@ -221,9 +254,9 @@ export async function getRelatedPosts(
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
 
-	// 排除自身和加密文章
+	// 排除自身 加密文章和隐藏文章
 	const candidates = allPosts.filter(
-		(p) => p.id !== currentPost.id && !p.data.password,
+		(p) => p.id !== currentPost.id && !p.data.password && !p.data.hidden,
 	);
 
 	const currentTags = new Set(currentPost.data.tags || []);
