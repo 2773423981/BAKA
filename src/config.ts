@@ -318,6 +318,13 @@ export const navBarConfig: NavBarConfig = {
 		},
 
 		LinkPreset.Friends,
+
+		{
+			name: "糯米糍南梁电竞",
+			url: "https://nuomici.pages.dev/",
+			icon: "material-symbols:spa",
+			external: true,
+		},
 	],
 };
 
