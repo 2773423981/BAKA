@@ -20,6 +20,14 @@ export const friendsData: FriendItem[] = [
 		siteurl: "https://blog.xyamzw.top",
 		tags: ["friends"],
 	},
+	{
+		id: 2,
+		title: "n昵称YA",
+		imgurl: "https://nichengya.pages.dev/assets/home/t.webp",
+		desc: "一个平凡的无名小卒",
+		siteurl: "https://nichengya.pages.dev",
+		tags: ["friends"],
+	},
 ];
 
 // 获取所有友情链接数据

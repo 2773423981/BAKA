@@ -14,7 +14,7 @@ description: My friends
 name: 椛
 url: https://baka-1ul.pages.dev
 desc：一朵神秘的椛
-image: https://i.stardots.io/baka/StarDots-2026041522222248855.jpg
+image: https://baka-1ul.pages.dev/assets/images/Avatar.jpg
 ~~~
 
 ## 申请友链
