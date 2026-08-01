@@ -129,10 +129,10 @@ export const siteConfig: SiteConfig = {
 				"/assets/desktop-banner/2.jpg",
 				"/assets/desktop-banner/3.jpg",
 				"/assets/desktop-banner/4.jpg",
-				"/assets/desktop-banner/5.jpg",
+				"/assets/desktop-banner/5.png",
 				"/assets/desktop-banner/6.jpg",
-				"/assets/desktop-banner/7.jpg",
-				"/assets/desktop-banner/8.jpg",
+				"/assets/desktop-banner/7.png",
+				"/assets/desktop-banner/8.png",
 			], // 桌面横幅图片
 			mobile: [
 				"/assets/mobile-banner/1.webp",
@@ -172,14 +172,14 @@ export const siteConfig: SiteConfig = {
 			title: "椛的博客喵", // 主页横幅主标题
 
 			subtitle: [
-				"吃了吗",
-				"玩了吗",
-				"睡了吗",
-				"录了吗",
 				"Ciallo～(∠・ω< )⌒☆",
+				"这是一个炒鸡无敌厉害的小blog喵",
+				"咋还在看喵",
+				"录一发吗喵",
+				"Ba☆Ka~",
 				"已经没东西给你看啦",
 				"真的没啦",
-				"qwq",
+				"其实咱是xnn",
 			],
 			typewriter: {
 				enable: true, // 启用副标题打字机效果
@@ -254,18 +254,8 @@ export const siteConfig: SiteConfig = {
 };
 export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 	src: {
-		desktop: [
-			"/assets/desktop-banner/1.webp",
-			"/assets/desktop-banner/2.webp",
-			"/assets/desktop-banner/3.webp",
-			"/assets/desktop-banner/4.webp",
-		], // 桌面横幅图片
-		mobile: [
-			"/assets/mobile-banner/1.webp",
-			"/assets/mobile-banner/2.webp",
-			"/assets/mobile-banner/3.webp",
-			"/assets/mobile-banner/4.webp",
-		], // 移动横幅图片
+		desktop: [], // 桌面横幅图片
+		mobile: [], // 移动横幅图片
 	}, // 使用本地横幅图片
 	position: "center", // 壁纸位置，等同于 object-position
 	carousel: {
