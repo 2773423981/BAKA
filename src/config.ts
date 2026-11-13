@@ -407,7 +407,7 @@ export const shareConfig: ShareConfig = {
 
 export const announcementConfig: AnnouncementConfig = {
 	title: "", // 公告标题，填空使用i18n字符串Key.announcement
-	content: "公告就是没有公告喵", // 公告内容
+	content: "欢迎进群玩喵，QQ群号是1053987850喵，你椛姐指定给你好果汁吃喵！", // 公告内容
 	closable: true, // 允许用户关闭公告
 	link: {
 		enable: false, // 启用链接
